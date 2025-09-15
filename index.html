@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/site.css" />
+  </head>
+  <body>
+    <main>
+      <section id="home" class="home">
+        <div class="home-rect">
+          <nav class="nav-pill" aria-label="Primary">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#profile" class="nav-link">Profile</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </nav>
+        </div>
+      </section>
+
+      <section id="profile" class="profile">
+        <h2>BEHIND THE SCREEN: MEET JOELMAR GRECIA</h2>
+        <nav class="profile-tabs" aria-label="Profile sections">
+          <span class="tab-indicator" aria-hidden="true"></span>
+          <a href="#skills" class="tab" data-tab="skills">Skills</a>
+          <a href="#education" class="tab" data-tab="education">Education</a>
+          <a href="#hobbies" class="tab" data-tab="hobbies">Hobbies</a>
+        </nav>
+        <div class="profile-content">
+          <section id="panel-skills" class="panel" role="region" aria-labelledby="tab-skills">
+            <div class="skills-grid">
+              <div class="skills-col">
+                <h4>Coding Skills</h4>
+                <div class="skills-meters">
+                  <div class="skill">
+                    <div class="skill-label"><span>HTML</span><span>90%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                  </div>
+                  <div class="skill">
+                    <div class="skill-label"><span>CSS</span><span>85%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+                  </div>
+                  <div class="skill">
+                    <div class="skill-label"><span>PHP</span><span>70%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:70%"></div></div>
+                  </div>
+                  <div class="skill">
+                    <div class="skill-label"><span>JavaScript</span><span>75%</span></div>
+                    <div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="skills-col">
+                <h4>Software Skills</h4>
+                <div class="software-box">
+                  <div class="software-icons">
+                    <img src="/assets/PR.png" alt="Premiere Pro" />
+                    <img src="/assets/PS.png" alt="Photoshop" />
+                    <img src="/assets/LR.png" alt="Lightroom" />
+                    <img src="/assets/AE.png" alt="After Effects" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section id="panel-education" class="panel" hidden role="region" aria-labelledby="tab-education">
+            <p>Coming soon.</p>
+          </section>
+          <section id="panel-hobbies" class="panel" hidden role="region" aria-labelledby="tab-hobbies">
+            <p>Coming soon.</p>
+          </section>
+        </div>
+      </section>
+      <section id="projects" class="projects">
+        <div class="projects-inner">
+          <div class="projects-title">
+            <h2>Boot Up: <br>Experience My <br>Creative System</h2>
+          </div>
+          <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-image" aria-hidden="true"></div>
+            <h3 class="project-title">WVSU Shop</h3>
+          </article>
+          <article class="project-card">
+            <div class="project-image" aria-hidden="true"></div>
+            <h3 class="project-title">PetMedix</h3>
+          </article>
+          <article class="project-card">
+            <div class="project-image" aria-hidden="true"></div>
+            <h3 class="project-title">Working Student Documentation</h3>
+          </article>
+          <article class="project-card">
+            <div class="project-image" aria-hidden="true"></div>
+            <h3 class="project-title">blank</h3>
+          </article>
+          </div>
+        </div>
+      </section>
+      <script src="/public/profile-tabs.js"></script>
+    </main>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script src="/public/profile-tabs.js"></script>
+    <script src="/public/canvas-visibility.js"></script>
+    <script src="/public/projects-animate.js"></script>
+  </body>
+  </html>
+
+

@@ -1,0 +1,310 @@
+/* Base layout */
+:root {
+  --bg: #000;
+  --card: #111827;
+  --muted: #9ca3af;
+  --text: hsl(0, 0%, 100%);
+  --brand: #34d399;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden; /* prevent accidental horizontal scroll from 100vw */
+}
+
+/* Keep #root as the 3D layer container only; content is outside */
+#root {
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* push canvas lowest */
+  pointer-events: none; /* don't block clicks on DOM at all */
+}
+
+/* Hide canvas when not on home */
+.canvas-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 200ms ease;
+}
+
+main {
+  position: relative;
+  z-index: 0; /* behind Canvas */
+}
+
+/* Home rectangle */
+.home {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.home-rect {
+  /* Fill viewport with margins without triggering 100vw overflow */
+  margin: 20px 40px 120px;              /* top, sides, bottom */
+  width: calc(100% - 80px);            /* 40px + 40px side margins */
+  height: calc(105dvh - 27px - 27px);  /* subtract top + bottom margins */
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #33415566;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  pointer-events: none; /* prevent this large layer from blocking clicks below */
+}
+
+/* Centered pill navbar inside home rectangle */
+.nav-pill {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 50px;
+    padding: 10px;
+    background: #000;
+    border-radius: 50px; /* requested 50 radius */
+    z-index: 50; /* render above Canvas so links are clickable */
+    pointer-events: auto;
+  }
+  
+  .nav-link {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 16px;
+    line-height: 1;
+    color: hsl(0, 0%, 100%);
+    border-radius: 40px;
+    text-decoration: none;
+  }
+  
+
+/* Profile section */
+.profile {
+  padding: 80px 40px 40px;
+  color: var(--text);
+  display: grid;
+  place-items: center; /* center content horizontally and vertically */
+  text-align: center;
+  min-height: 60vh;
+  position: relative;
+  z-index: 20; /* ensure above canvas */
+}
+
+.profile h2 {
+  margin: 0; /* remove gap under title */
+  font-size: clamp(24px, 4vw, 36px);
+}
+
+/* Profile tabs */
+.profile-tabs {
+  margin-top: 3px; /* sit right under the title */
+  margin-bottom: 40px;
+  display: inline-flex;
+  gap: 25px;
+  padding: 4px 6px;
+  background: hsl(0, 0%, 100%);
+  backdrop-filter: blur(6px);
+  position: relative;
+  transform-origin: center center; /* tilt around center without shifting */
+  z-index: 60; /* above other content */
+  pointer-events: auto;
+}
+
+.tab {
+  display: inline-block;
+  padding: 10px 35px;
+  font-size: 18px;
+  color: #000;
+  border-radius: 20px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Liquid-like indicator */
+.tab-indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 36px;
+  background: #000;
+  border-radius: 999px;
+  z-index: 0;
+  transition: transform 300ms cubic-bezier(.2,.8,.2,1), width 300ms cubic-bezier(.2,.8,.2,1);
+  filter: blur(8px) saturate(1.2);
+}
+
+.profile-tabs .tab {
+  position: relative;
+  z-index: 1;
+}
+
+/* Panels area */
+.profile-content {
+  width: min(960px, 100%);
+  margin-top: 16px;
+  text-align: left;
+  color: var(--text);
+  background: transparent; /* no background */
+  border-radius: 12px;
+  padding: 16px 0;
+}
+
+.panel-title {
+  margin: 0 0 10px 0;
+  color: #0b0f17;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 24px;
+  padding-left: 120px; /* nudge coding/software skills to the right */
+}
+
+.skills-col h4 {
+  margin: 0 0 6px 0;
+  color: #0b0f17;
+}
+
+.skills-col ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #111827;
+}
+
+/* Software skills icons */
+.software-box {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  width: 220px;
+  margin-left: 20px;
+  margin-top: 40px;
+}
+
+.software-icons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* two icons per row */
+  gap: 10px 2px;
+  align-items: center;
+  grid-auto-rows: 64px; /* lock row height */
+}
+
+.software-icons img {
+  width: 30px;  /* base size */
+  height: 30px;
+  object-fit: contain;
+  justify-self: center;
+  filter: brightness(0) invert(0); /* keep original colors; remove to invert */
+  transform: scale(2.2); /* visually larger without growing grid rows */
+  transform-origin: center;
+}
+
+/* Coding skills meters */
+.skills-meters {
+  display: grid;
+  gap: 20px;
+}
+
+.skill {
+  display: grid;
+  gap: 10px;
+}
+
+.skill-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.skill-bar {
+  height: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.skill-fill {
+  height: 100%;
+  background: #fff; /* white fill */
+  width: 0; /* set inline per skill */
+  border-radius: 999px;
+}
+
+/* Projects section */
+.projects {
+  padding: 80px 40px 120px; 
+  margin-top: 200px;
+  color: var(--text);
+  text-align: left;
+}
+
+.projects-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* title left, cards right */
+  align-items: start;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.projects-title h2 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 56px);
+  line-height: 1.1;
+}
+
+.projects-grid {
+  position: sticky; /* stick to viewport as we scroll rows */
+  top: 100px;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+.project-card {
+  background: #ffffff; /* white base */
+  padding: 20px;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-image {
+  height: 250px; /* image container */
+  background: #fff;
+  border: 2px solid #000; /* black border */
+  display: grid;
+  place-items: center;
+  color: #6b7280;
+}
+
+.project-title {
+  margin-top: 10px; /* occupy full width below image */
+  padding: 10px 12px;
+  font-size: 13px;
+  text-align: center;
+  background: #000; /* own black background */
+  color: #fff;
+}
+
+
