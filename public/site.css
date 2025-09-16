@@ -1,4 +1,8 @@
 /* Base layout */
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg: #000;
   --card: #111827;
@@ -195,6 +199,62 @@ main {
   transform-origin: center center; /* tilt around center without shifting */
   z-index: 60; /* above other content */
   pointer-events: auto;
+  transition: none;
+  border-radius: 50px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  border: 1px solid #fff;
+}
+
+.profile-tabs::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 80px;
+  background: #000000;
+  left: var(--liquid1-x, 50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: liquidFlow 2s ease-in-out infinite;
+  z-index: -1;
+  transition: left 400ms cubic-bezier(.25,.46,.45,.94);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.profile-tabs::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 60px;
+  background: #000000;
+  left: var(--liquid2-x, 30%);
+  top: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 60% 40% 50% 30%;
+  animation: liquidFlow 2.5s ease-in-out infinite reverse;
+  z-index: -1;
+  transition: left 400ms cubic-bezier(.25,.46,.45,.94);
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.profile-tabs {
+  position: relative;
+}
+
+.profile-tabs .liquid-droplet-3 {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 70px;
+  background: #000000;
+  left: var(--liquid3-x, 70%);
+  top: 40%;
+  transform: translate(-50%, -50%);
+  border-radius: 50% 30% 60% 40%;
+  animation: liquidFlow 3s ease-in-out infinite;
+  z-index: -1;
+  transition: left 400ms cubic-bezier(.25,.46,.45,.94);
+  box-shadow: 0 0 18px rgba(0,0,0,0.25);
 }
 
 .tab {
@@ -205,6 +265,11 @@ main {
   border-radius: 20px;
   text-decoration: none;
   cursor: pointer;
+  transition: color 400ms cubic-bezier(.25,.46,.45,.94);
+}
+
+.tab.active {
+  color: #fff;
 }
 
 /* Liquid-like indicator */
@@ -215,11 +280,58 @@ main {
   transform: translateY(-50%);
   width: 0;
   height: 36px;
-  background: #000;
-  border-radius: 999px;
+  border-radius: 18px;
   z-index: 0;
-  transition: transform 300ms cubic-bezier(.2,.8,.2,1), width 300ms cubic-bezier(.2,.8,.2,1);
-  filter: blur(8px) saturate(1.2);
+  transition: transform 400ms cubic-bezier(.25,.46,.45,.94), width 400ms cubic-bezier(.25,.46,.45,.94);
+}
+
+
+@keyframes liquidFlow {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 50% 60% 40% 50%;
+    filter: blur(0px);
+  }
+  12.5% {
+    transform: translate(-45%, -50%) scale(1.02);
+    border-radius: 60% 40% 50% 60%;
+    filter: blur(0.2px);
+  }
+  25% {
+    transform: translate(-40%, -50%) scale(1.05);
+    border-radius: 40% 50% 60% 40%;
+    filter: blur(0.4px);
+  }
+  37.5% {
+    transform: translate(-35%, -50%) scale(0.98);
+    border-radius: 50% 40% 50% 60%;
+    filter: blur(0.3px);
+  }
+  50% {
+    transform: translate(-30%, -50%) scale(0.95);
+    border-radius: 60% 50% 40% 50%;
+    filter: blur(0.5px);
+  }
+  62.5% {
+    transform: translate(-35%, -50%) scale(1.01);
+    border-radius: 40% 60% 50% 40%;
+    filter: blur(0.3px);
+  }
+  75% {
+    transform: translate(-40%, -50%) scale(1.03);
+    border-radius: 50% 40% 60% 50%;
+    filter: blur(0.4px);
+  }
+  87.5% {
+    transform: translate(-45%, -50%) scale(0.99);
+    border-radius: 60% 50% 40% 60%;
+    filter: blur(0.2px);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    border-radius: 50% 60% 40% 50%;
+    filter: blur(0px);
+  }
 }
 
 .profile-tabs .tab {
@@ -348,7 +460,7 @@ main {
 .projects-grid {
   position: sticky; /* stick to viewport as we scroll rows */
   top: 100px;
-  margin-top: 30px;
+  margin-top: 10px;
   display: grid;
   grid-template-columns: repeat(3, minmax(230px, 1fr));
   gap: 24px;
@@ -404,7 +516,7 @@ main {
   position: relative;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -476,6 +588,99 @@ main {
   font-size: 13px;
   color: #6b7280;
   line-height: 1.4;
+}
+
+/* Hobbies section */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.hobby-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hobby-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+.hobby-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.hobby-placeholder {
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.hobby-item h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #eee;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  z-index: 1000;
+}
+
+.scroll-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.scroll-to-top:active {
+  transform: translateY(0);
 }
 
 /* Contact section */

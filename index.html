@@ -46,6 +46,7 @@
         <h2>BEHIND THE SCREEN: MEET JOELMAR GRECIA</h2>
         <nav class="profile-tabs" aria-label="Profile sections">
           <span class="tab-indicator" aria-hidden="true"></span>
+          <div class="liquid-droplet-3"></div>
           <a href="#skills" class="tab" data-tab="skills">Skills</a>
           <a href="#education" class="tab" data-tab="education">Education</a>
           <a href="#hobbies" class="tab" data-tab="hobbies">Hobbies</a>
@@ -115,7 +116,38 @@
             </div>
           </section>
           <section id="panel-hobbies" class="panel" hidden role="region" aria-labelledby="tab-hobbies">
-            <p>Coming soon.</p>
+            <div class="hobbies-grid">
+              <div class="hobby-item">
+                <div class="hobby-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3>Movies</h3>
+              </div>
+              <div class="hobby-item">
+                <div class="hobby-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <h3>Photography</h3>
+              </div>
+              <div class="hobby-item">
+                <div class="hobby-icon">
+                  <div class="hobby-placeholder"></div>
+                </div>
+                <h3>Hobby 3</h3>
+              </div>
+              <div class="hobby-item">
+                <div class="hobby-icon">
+                  <div class="hobby-placeholder"></div>
+                </div>
+                <h3>Hobby 4</h3>
+              </div>
+            </div>
           </section>
         </div>
       </section>
@@ -201,6 +233,14 @@
     <script src="/public/profile-tabs.js"></script>
     <script src="/public/canvas-visibility.js"></script>
     <script src="/public/projects-animate.js"></script>
+    <script src="/public/scroll-to-top.js"></script>
+    
+    <!-- Scroll to top button -->
+    <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="m18 15-6-6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
   </body>
   </html>
 
