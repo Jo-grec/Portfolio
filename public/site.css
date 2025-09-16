@@ -31,6 +31,10 @@ body {
   color: var(--text);
   background: var(--bg);
   overflow-x: hidden; /* prevent accidental horizontal scroll from 100vw */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 /* Keep #root as the 3D layer container only; content is outside */
@@ -368,6 +372,13 @@ main {
   display: grid;
   place-items: center;
   color: #6b7280;
+  overflow: hidden;
+}
+
+.project-image img {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .project-title {
@@ -379,4 +390,185 @@ main {
   color: #fff;
 }
 
+.project-eye {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Education Roadmap */
+.education-roadmap {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.roadmap-line {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #fff, #fff);
+  border-radius: 2px;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+.roadmap-point {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  z-index: 2;
+}
+
+.teardrop-pointer {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 0 0 4px #000, 0 0 0 6px #fff;
+  z-index: 3;
+  margin-bottom: 20px;
+}
+
+.roadmap-year {
+  background: #fff;
+  color: #000;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.roadmap-content {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  max-width: 250px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.roadmap-content h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.roadmap-content p {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.4;
+}
+
+/* Contact section */
+.contact {
+  display: grid;
+  place-items: center;
+  min-height: 50vh; /* Half the height of home section */
+  padding: 40px 0;
+}
+
+.contact-rect {
+  /* Half height of home rectangle */
+  margin: 20px 60px;
+  width: calc(100% - 80px);
+  height: calc(85.5dvh - 10px - 10px); /* Half of home rectangle height */
+  border-radius: 16px;
+  background: #ffffff;
+  border: 1px solid #33415566;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  padding: 40px;
+  padding-left: 80px;
+  padding-right: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding-top: 50px;
+}
+
+.contact-rect h2 {
+  margin: 0 0 30px 0;
+  font-size: clamp(24px, 3vw, 32px);
+  color: #000;
+  font-weight: 600;
+  font-size: 80px;
+  font-family: MangoGrotesque-Black;
+}
+
+.contact-btn {
+  padding: 12px 24px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.contact-email {
+  margin-top: 200px;
+  font-size: 20px;
+  color: #000;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.contact-social {
+  position: absolute;
+  right: 80px;
+  display: flex;
+}
+
+.contact-social .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.contact-image {
+  position: absolute;
+  bottom: 50px;
+  right: 80px;
+  width: 100;
+  height: 350px;
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.contact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 

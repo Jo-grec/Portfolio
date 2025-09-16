@@ -3,19 +3,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root')
   if (!home || !root) return
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const entry = entries[0]
-      if (entry && entry.isIntersecting) {
-        root.classList.remove('canvas-hidden')
-      } else {
-        root.classList.add('canvas-hidden')
-      }
-    },
-    { root: null, threshold: 0.2 },
-  )
+  function updateCanvasPosition() {
+    const scrollY = window.scrollY
+    const homeHeight = home.offsetHeight
+    
+    // Keep the card in place initially, then move it up as content covers it
+    let translateY = 0
+    
+    // Start moving the card up when we scroll past 20% of the home section
+    const startMovingAt = homeHeight * 0.2
+    
+    if (scrollY > startMovingAt) {
+      // Move the card up to get covered by scrolling content
+      const scrollProgress = (scrollY - startMovingAt) / (homeHeight - startMovingAt)
+      translateY = -scrollProgress * homeHeight * 0.8 // Move up by 80% of home height
+    }
+    
+    // Apply the transform
+    root.style.transform = `translateY(${translateY}px)`
+    
+    // Hide the card when it's completely scrolled past
+    if (scrollY > homeHeight) {
+      root.style.visibility = 'hidden'
+    } else {
+      root.style.visibility = 'visible'
+    }
+  }
 
-  observer.observe(home)
+  // Update on scroll
+  window.addEventListener('scroll', updateCanvasPosition, { passive: true })
+  
+  // Initial update
+  updateCanvasPosition()
 })
 
 
