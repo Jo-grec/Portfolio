@@ -3,6 +3,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root')
   if (!home || !root) return
 
+  // Initially hide the canvas to prevent showing loading spinner
+  root.style.visibility = 'hidden'
+  root.style.transform = 'translateY(-100vh)'
+  root.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+
+  // Show canvas after a short delay to allow 3D scene to load
+  setTimeout(() => {
+    root.style.visibility = 'visible'
+    root.style.transform = 'translateY(0)'
+  }, 1000) // 1 second delay
+
   function updateCanvasPosition() {
     const scrollY = window.scrollY
     const homeHeight = home.offsetHeight
@@ -19,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       translateY = -scrollProgress * homeHeight * 0.8 // Move up by 80% of home height
     }
     
-    // Apply the transform
+    // Apply the transform (combine with initial position)
     root.style.transform = `translateY(${translateY}px)`
     
     // Hide the card when it's completely scrolled past

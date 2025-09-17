@@ -157,11 +157,11 @@
             <h2>Boot Up: <br>Experience <br>My Creations</h2>
           </div>
           <div class="projects-grid">
-          <article class="project-card">
-            <div class="project-image" aria-hidden="true">
-              <img src="/assets/wvsushop.png" alt="WVSU Shop Project" />
-            </div>
-            <h3 class="project-title">WVSU Shop</h3>
+            <article class="project-card" data-project="wvsushop">
+              <div class="project-image" aria-hidden="true">
+                <img src="assets/wvsushop.png" alt="WVSU Shop Project" />
+              </div>
+              <h3 class="project-title">WVSU Shop</h3>
             <div class="project-eye">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -169,9 +169,11 @@
               </svg>
             </div>
           </article>
-          <article class="project-card">
-            <div class="project-image" aria-hidden="true"></div>
-            <h3 class="project-title">PetMedix</h3>
+            <article class="project-card" data-project="petmedix">
+              <div class="project-image" aria-hidden="true">
+                <img src="assets/petmedix.png" alt="PetMedix Project" />
+              </div>
+              <h3 class="project-title">PetMedix</h3>
             <div class="project-eye">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -179,9 +181,9 @@
               </svg>
             </div>
           </article>
-          <article class="project-card">
-            <div class="project-image" aria-hidden="true"></div>
-            <h3 class="project-title">Documentation</h3>
+            <article class="project-card" data-project="documentation">
+              <div class="project-image" aria-hidden="true"></div>
+              <h3 class="project-title">Documentation</h3>
             <div class="project-eye">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -189,9 +191,9 @@
               </svg>
             </div>
           </article>
-          <article class="project-card">
-            <div class="project-image" aria-hidden="true"></div>
-            <h3 class="project-title">SignGo</h3>
+            <article class="project-card" data-project="signgo">
+              <div class="project-image" aria-hidden="true"></div>
+              <h3 class="project-title">SignGo</h3>
             <div class="project-eye">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -234,6 +236,39 @@
     <script src="/public/canvas-visibility.js"></script>
     <script src="/public/projects-animate.js"></script>
     <script src="/public/scroll-to-top.js"></script>
+    
+    <!-- Project Modal -->
+    <div id="project-modal" class="project-modal" aria-hidden="true">
+      <div class="modal-backdrop"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="m18 6-12 12M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="modal-body">
+          <div class="modal-image">
+            <div class="modal-image-frame">
+              <img id="modal-project-image" src="" alt="" />
+            </div>
+          </div>
+          <div class="modal-info">
+            <h2 id="modal-project-title"></h2>
+            <p id="modal-project-description"></p>
+            <div class="tech-stacks">
+              <h3>Tech Stacks</h3>
+              <div id="modal-tech-stacks" class="tech-tags"></div>
+            </div>
+            <div class="modal-actions">
+              <a href="#" id="modal-live-link" class="btn-primary" target="_blank">View Live</a>
+              <a href="#" id="modal-github-link" class="btn-secondary" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="/public/project-modal.js"></script>
     
     <!-- Scroll to top button -->
     <button id="scroll-to-top" class="scroll-to-top" aria-label="Scroll to top">

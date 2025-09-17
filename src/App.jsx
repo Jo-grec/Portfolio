@@ -37,13 +37,7 @@ export default function App() {
 }
 
 function FallbackSpinner() {
-  return (
-    <mesh>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="#555" />
-      <SpinnerRotation />
-    </mesh>
-  )
+  return null // Hide the loading spinner completely
 }
 
 function SpinnerRotation() {
@@ -87,6 +81,22 @@ function Band({ maxSpeed = 50, minSpeed = 10 }) {
       vec.add(dir.multiplyScalar(state.camera.position.length()))
       ;[card, j1, j2, j3, fixed].forEach((ref) => ref.current?.wakeUp())
       card.current?.setNextKinematicTranslation({ x: vec.x - dragged.x, y: vec.y - dragged.y, z: vec.z - dragged.z })
+    } else {
+      // Add subtle swaying animation when not being dragged
+      const time = state.clock.elapsedTime
+      const swayX = Math.sin(time * 0.8) * 0.02
+      const swayY = Math.cos(time * 0.6) * 0.015
+      const swayZ = Math.sin(time * 0.4) * 0.01
+      
+      // Apply gentle sway to the card
+      if (card.current) {
+        const currentPos = card.current.translation()
+        card.current.setTranslation({
+          x: currentPos.x + swayX,
+          y: currentPos.y + swayY,
+          z: currentPos.z + swayZ
+        })
+      }
     }
     if (fixed.current) {
       // Fix most of the jitter when over pulling the card
