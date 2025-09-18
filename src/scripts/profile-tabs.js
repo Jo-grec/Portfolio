@@ -36,9 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Ensure liquid reaches the edges for edge tabs with smoother boundaries
     const barWidth = tabsBar.getBoundingClientRect().width
-    const finalLiquid1X = Math.max(40, Math.min(liquid1X, barWidth - 40))
+    const finalLiquid1X = Math.max(20, Math.min(liquid1X, barWidth - 40))
     const finalLiquid2X = Math.max(60, Math.min(liquid2X, barWidth - 60))
-    const finalLiquid3X = Math.max(60, Math.min(liquid3X, barWidth - 60))
+    const finalLiquid3X = Math.max(20, Math.min(liquid3X, barWidth - 40))
     
     // Update CSS custom properties for liquid position
     tabsBar.style.setProperty('--liquid1-x', `${finalLiquid1X}px`)
@@ -50,10 +50,48 @@ document.addEventListener('DOMContentLoaded', () => {
     tabs.forEach((t) => t.classList.toggle('active', t === target))
     moveIndicator(target)
     const key = target.dataset.tab
+    
+    // Find currently visible panel
+    const currentVisible = Object.values(panels).find(el => el && !el.hidden)
+    
+    if (currentVisible && currentVisible === panels[key]) {
+      // If clicking the same tab, do nothing
+      return
+    }
+    
+    // If there's a currently visible panel, fade it out first
+    if (currentVisible) {
+      currentVisible.classList.remove('visible')
+      // Wait for fade out to complete before showing new panel
+      setTimeout(() => {
+        showTargetPanel(key)
+      }, 200) // Match the CSS transition duration
+    } else {
+      // No current panel, show immediately
+      showTargetPanel(key)
+    }
+  }
+  
+  function showTargetPanel(key) {
+    // Hide all panels first
     Object.entries(panels).forEach(([k, el]) => {
       if (!el) return
-      el.hidden = k !== key
+      el.hidden = true
     })
+    
+    // Show target panel
+    const targetPanel = panels[key]
+    if (targetPanel) {
+      targetPanel.hidden = false
+      // Use triple requestAnimationFrame for ultra-smooth transition
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            targetPanel.classList.add('visible')
+          })
+        })
+      })
+    }
   }
 
   tabs.forEach((t) =>
@@ -69,5 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   // Initialize to first tab
-  requestAnimationFrame(() => selectTab(tabs[0]))
+  requestAnimationFrame(() => {
+    selectTab(tabs[0])
+    // Ensure the first panel is visible immediately
+    const firstPanel = panels[Object.keys(panels)[0]]
+    if (firstPanel) {
+      firstPanel.classList.add('visible')
+    }
+  })
 })
