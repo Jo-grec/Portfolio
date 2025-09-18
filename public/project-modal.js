@@ -5,7 +5,6 @@ const projectData = {
     description: 'An e-commerce platform designed specifically for West Visayas State University students and faculty. Features include product browsing, cart management, secure payments, and admin dashboard for inventory management.',
     image: 'assets/wvsushop1.png', // Change this to your modal image
     techStacks: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    liveLink: '#',
     githubLink: '#'
   },
   'petmedix': {
@@ -13,14 +12,13 @@ const projectData = {
     description: 'A comprehensive veterinary management system that helps pet owners track their pets\' health records, schedule appointments, and connect with local veterinarians. Includes medication reminders and health analytics.',
     image: 'assets/petmedix-modal.png', // Change this to your modal image
     techStacks: ['Python', 'PySide6', 'MariaDB'],
-    liveLink: '#',
     githubLink: '#'
   },
-  'documentation': {
-    title: 'Documentation',
-    description: 'A comprehensive documentation system for working students, featuring time tracking, task management, and progress reporting. Built with modern web technologies for seamless user experience.',
+  'cictzone': {
+    title: 'CictZone',
+    description: 'CICTZONE is an interactive 2D shooting game where AI-powered NPCs navigate obstacle-filled grids, make strategic decisions, and adapt to player actions using techniques like pathfinding, constraint satisfaction, and intelligent agent behavior, enhancing realism and gameplay immersion.',
     image: 'assets/documentation-modal.png', // Change this to your modal image
-    techStacks: ['Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS'],
+    techStacks: ['Python', 'Pygame', 'AI'],
     liveLink: '#',
     githubLink: '#'
   },

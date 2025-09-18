@@ -53,6 +53,7 @@ body {
 .canvas-hidden {
   opacity: 0;
   visibility: hidden;
+  pointer-events: none !important;
   transition: opacity 200ms ease;
 }
 
@@ -179,6 +180,29 @@ main {
   color: #fff;
   text-decoration: none;
   border: 1px solid #111;
+}
+
+.card-reset-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #111;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.card-reset-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+.card-reset-btn:active {
+  transform: translateY(0);
 }
 
 .profile h2 {
