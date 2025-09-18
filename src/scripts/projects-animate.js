@@ -56,5 +56,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial measure
   requestAnimationFrame(onResize)
 })
-
-

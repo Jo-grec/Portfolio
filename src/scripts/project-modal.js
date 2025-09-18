@@ -1,33 +1,31 @@
+// Import assets
+import wvsushop1Image from '/assets/wvsushop1.png'
+import petmedixModalImage from '/assets/petmedix-modal.png'
+import cictzoneImage from '/assets/cictzone.png'
+import wvsushopImage from '/assets/wvsushop.png'
+
 // Project data
 const projectData = {
   'wvsushop': {
     title: 'WVSU Shop',
     description: 'An e-commerce platform designed specifically for West Visayas State University students and faculty. Features include product browsing, cart management, secure payments, and admin dashboard for inventory management.',
-    image: 'assets/wvsushop1.png', // Change this to your modal image
+    image: wvsushop1Image,
     techStacks: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
     githubLink: '#'
   },
   'petmedix': {
     title: 'PetMedix',
     description: 'A comprehensive veterinary management system that helps pet owners track their pets\' health records, schedule appointments, and connect with local veterinarians. Includes medication reminders and health analytics.',
-    image: 'assets/petmedix-modal.png', // Change this to your modal image
+    image: petmedixModalImage,
     techStacks: ['Python', 'PySide6', 'MariaDB'],
     githubLink: '#'
   },
   'cictzone': {
     title: 'CictZone',
     description: 'CICTZONE is an interactive 2D shooting game where AI-powered NPCs navigate obstacle-filled grids, make strategic decisions, and adapt to player actions using techniques like pathfinding, constraint satisfaction, and intelligent agent behavior, enhancing realism and gameplay immersion.',
-    image: 'assets/documentation-modal.png', // Change this to your modal image
+    image: cictzoneImage,
     video: 'https://www.youtube.com/embed/4dCCRnqYmrQ', // Replace YOUR_VIDEO_ID with actual YouTube video ID
     techStacks: ['Python', 'Pygame', 'AI'],
-    liveLink: '#',
-    githubLink: '#'
-  },
-  'signgo': {
-    title: 'SignGo',
-    description: 'An innovative digital signature platform that enables secure document signing and verification. Features include multi-party signing, audit trails, and integration with popular document formats.',
-    image: 'assets/signgo-modal.png', // Change this to your modal image
-    techStacks: ['React Native', 'Blockchain', 'Web3', 'Ethereum', 'IPFS'],
     liveLink: '#',
     githubLink: '#'
   }

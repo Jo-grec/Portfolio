@@ -71,5 +71,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize to first tab
   requestAnimationFrame(() => selectTab(tabs[0]))
 })
-
-
