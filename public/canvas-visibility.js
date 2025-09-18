@@ -3,20 +3,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root')
   if (!home || !root) return
 
+  // Check if we're already scrolled past the home section on page load
+  const isPastHome = window.scrollY > home.offsetHeight
+
   // Initially hide the canvas to prevent showing loading spinner
   root.style.visibility = 'hidden'
   root.style.transform = 'translateY(-100vh)'
   root.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)'
 
-  // Show canvas after a short delay to allow 3D scene to load
-  setTimeout(() => {
-    root.style.visibility = 'visible'
-    root.style.transform = 'translateY(0)'
-  }, 1000) // 1 second delay
+  // Only show canvas if we're not past the home section
+  if (!isPastHome) {
+    // Show canvas after a short delay to allow 3D scene to load
+    setTimeout(() => {
+      root.style.visibility = 'visible'
+      root.style.transform = 'translateY(0)'
+    }, 1000) // 1 second delay
+  }
 
   function updateCanvasPosition() {
     const scrollY = window.scrollY
     const homeHeight = home.offsetHeight
+    
+    // Hide the card when it's completely scrolled past
+    if (scrollY > homeHeight) {
+      root.style.visibility = 'hidden'
+      return
+    }
+    
+    // Only show and animate the card if we're in the home section
+    root.style.visibility = 'visible'
     
     // Keep the card in place initially, then move it up as content covers it
     let translateY = 0
@@ -32,13 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Apply the transform (combine with initial position)
     root.style.transform = `translateY(${translateY}px)`
-    
-    // Hide the card when it's completely scrolled past
-    if (scrollY > homeHeight) {
-      root.style.visibility = 'hidden'
-    } else {
-      root.style.visibility = 'visible'
-    }
   }
 
   // Update on scroll

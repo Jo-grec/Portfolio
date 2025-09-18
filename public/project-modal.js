@@ -18,6 +18,7 @@ const projectData = {
     title: 'CictZone',
     description: 'CICTZONE is an interactive 2D shooting game where AI-powered NPCs navigate obstacle-filled grids, make strategic decisions, and adapt to player actions using techniques like pathfinding, constraint satisfaction, and intelligent agent behavior, enhancing realism and gameplay immersion.',
     image: 'assets/documentation-modal.png', // Change this to your modal image
+    video: 'https://www.youtube.com/embed/4dCCRnqYmrQ', // Replace YOUR_VIDEO_ID with actual YouTube video ID
     techStacks: ['Python', 'Pygame', 'AI'],
     liveLink: '#',
     githubLink: '#'
@@ -35,6 +36,7 @@ const projectData = {
 // DOM elements
 const modal = document.getElementById('project-modal');
 const modalImage = document.getElementById('modal-project-image');
+const modalVideo = document.getElementById('modal-project-video');
 const modalTitle = document.getElementById('modal-project-title');
 const modalDescription = document.getElementById('modal-project-description');
 const modalTechStacks = document.getElementById('modal-tech-stacks');
@@ -83,10 +85,23 @@ function openModal(projectKey) {
   }
   
   // Update modal content
-  modalImage.src = project.image;
-  modalImage.alt = project.title;
   modalTitle.textContent = project.title;
   modalDescription.textContent = project.description;
+  
+  // Handle image or video display
+  if (project.video) {
+    // Show video, hide image
+    modalVideo.src = project.video;
+    modalVideo.style.display = 'block';
+    modalImage.style.display = 'none';
+  } else {
+    // Show image, hide video
+    modalImage.src = project.image;
+    modalImage.alt = project.title;
+    modalImage.style.display = 'block';
+    modalVideo.style.display = 'none';
+    modalVideo.src = ''; // Clear video source when not needed
+  }
   
   // Update tech stacks
   modalTechStacks.innerHTML = '';
@@ -111,6 +126,9 @@ function closeModal() {
   modal.classList.remove('active');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = ''; // Restore scrolling
+  
+  // Clear video source to stop playback
+  modalVideo.src = '';
 }
 
 // Prevent modal from closing when clicking inside modal content

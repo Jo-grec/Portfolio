@@ -517,6 +517,12 @@ main {
   object-fit: cover;
 }
 
+/* Specific sizing for CictZone project image */
+.project-card[data-project="cictzone"] .project-image img {
+  width: 100%; /* Adjust this value to make it smaller or larger */
+  height: 70%;
+  object-fit: cover;
+}
 .project-title {
   margin-top: 10px; /* occupy full width below image */
   padding: 10px 12px;
@@ -903,6 +909,12 @@ main {
   height: 100%;
   object-fit: cover;
   object-position: center top;
+  border-radius: 6px;
+}
+
+.modal-image iframe {
+  width: 100%;
+  height: 100%;
   border-radius: 6px;
 }
 
