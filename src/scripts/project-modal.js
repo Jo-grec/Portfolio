@@ -10,24 +10,20 @@ const projectData = {
     title: 'WVSU Shop',
     description: 'An e-commerce platform designed specifically for West Visayas State University students and faculty. Features include product browsing, cart management, secure payments, and admin dashboard for inventory management.',
     image: wvsushop1Image,
-    techStacks: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    githubLink: '#'
+    techStacks: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL']
   },
   'petmedix': {
     title: 'PetMedix',
     description: 'A comprehensive veterinary management system that helps pet owners track their pets\' health records, schedule appointments, and connect with local veterinarians. Includes medication reminders and health analytics.',
     image: petmedixModalImage,
-    techStacks: ['Python', 'PySide6', 'MariaDB'],
-    githubLink: '#'
+    techStacks: ['Python', 'PySide6', 'MariaDB']
   },
   'cictzone': {
     title: 'CictZone',
     description: 'CICTZONE is an interactive 2D shooting game where AI-powered NPCs navigate obstacle-filled grids, make strategic decisions, and adapt to player actions using techniques like pathfinding, constraint satisfaction, and intelligent agent behavior, enhancing realism and gameplay immersion.',
     image: cictzoneImage,
     video: 'https://www.youtube.com/embed/4dCCRnqYmrQ', // Replace YOUR_VIDEO_ID with actual YouTube video ID
-    techStacks: ['Python', 'Pygame', 'AI'],
-    liveLink: '#',
-    githubLink: '#'
+    techStacks: ['Python', 'Pygame', 'AI']
   }
 };
 
@@ -38,8 +34,6 @@ const modalVideo = document.getElementById('modal-project-video');
 const modalTitle = document.getElementById('modal-project-title');
 const modalDescription = document.getElementById('modal-project-description');
 const modalTechStacks = document.getElementById('modal-tech-stacks');
-const modalLiveLink = document.getElementById('modal-live-link');
-const modalGithubLink = document.getElementById('modal-github-link');
 const modalClose = document.querySelector('.modal-close');
 const modalBackdrop = document.querySelector('.modal-backdrop');
 
@@ -110,9 +104,7 @@ function openModal(projectKey) {
     modalTechStacks.appendChild(tag);
   });
   
-  // Update links
-  modalLiveLink.href = project.liveLink;
-  modalGithubLink.href = project.githubLink;
+  // Links removed from modal UI
   
   // Show modal
   modal.classList.add('active');
